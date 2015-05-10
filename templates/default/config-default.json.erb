@@ -1,0 +1,65 @@
+{
+  "Server": {
+    "listeningAddress": "0.0.0.0",
+    "listeningPort": 3000,
+    "bodyParserConfiguration": {
+      "maxBodySize": 1000
+    },
+    "throttleConfiguration": {
+      "isEnabled": false
+    },
+    "serveStaticConfiguration": [
+      {
+        "urlPattern": "^(/|\\/?.*\\.html|/assets/.*)$",
+        "options": {
+          "directory": "./website/build/",
+          "default": "index.html"
+        }
+      }
+    ]
+  },
+  "Website": {
+    "contents": "./website/contents/",
+    "templates": "./website/templates/",
+    "output": "./website/build/",
+    "locals": {
+      "name": "ROM overview",
+      "owner": "cm-update-server provider name",
+      "topImageUrl": "",
+      "topImageAlt": "",
+      "customLinks": [
+        { "src": "/stats.html", "text": "Download statistics" },
+        { "src": "http://google.com", "text": "google", "target": "_blank" },
+        { "src": "http://github.com", "text": "github", "target": "_blank" }
+      ]
+    },
+    "plugins": [
+    ],
+    "require": {
+      "filesize": "filesize"
+    },
+    "jade": {
+      "pretty": true
+    },
+    "baseUrl": "/"
+  },
+  "Application": {
+    "realRomDownloadBaseUrl": "http://localhost/download/rom",
+    "proxyRomDownloadBaseUrl": "http://localhost:3000/download/rom",
+    "realIncrementalDownloadBaseUrl": "http://localhost/download/incremental",
+    "proxyIncrementalDownloadBaseUrl": "http://localhost:3000/download/incremental",
+    "changelogBaseUrl": "http://localhost:3000/changelog",
+    "isDownloadProxyEnabled": true,
+    "additionalPreviousChangelogs": 3
+  },
+  "Database": {
+    "name": "",
+    "username": "",
+    "password": "",
+    "options": {
+      "logging": false,
+      "dialect": "sqlite",
+      "storage": "./data/database.sqlite"
+    }
+  }
+}
