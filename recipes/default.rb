@@ -28,12 +28,24 @@ execute "git checkout HEAD --force" do
   cwd install_path
 end
 
+include_recipe "nodejs::default"
+
 execute "npm update" do
   user "root"
   cwd install_path
 end
 
+directory "#{install_path}/data"
+
 environments = ["production"]
+
+execute "node_modules/sequelize-cli/bin/sequelize init:config --force" do
+  cwd install_path
+end
+
+execute "sed -i'' 's/mysql/sqlite/g' config/config.json" do
+  cwd install_path
+end
 
 environments.each do |env|
   cookbook_file "config-default.js" do
@@ -42,6 +54,10 @@ environments.each do |env|
 
   template "config-default.json" do
     path "#{install_path}/config/#{env}.json"
+  end
+
+  execute "node_modules/sequelize-cli/bin/sequelize db:migrate --env #{env}" do
+    cwd install_path
   end
 end
 
