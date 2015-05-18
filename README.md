@@ -37,6 +37,23 @@ Include `cm-update-server` in your node's `run_list`:
 }
 ```
 
+## Testing
+
+The current testing environment requires Docker.
+
+```
+bundle install
+
+# Individual commands
+bundle exec kitchen create
+bundle exec kitchen converge
+bundle exec kitchen verify
+bundle exec kitchen destroy
+
+# (Alternate) All-in-one command
+bundle exec kitchen test
+```
+
 ## License and Authors
 
 Author:: YOUR_NAME (<YOUR_EMAIL>)

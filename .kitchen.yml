@@ -1,15 +1,18 @@
 ---
 driver:
-  name: vagrant
+  name: docker
+
+driver_config:
+  require_chef_omnibus: "11.18.12"
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.4
+  - name: ubuntu-14.04
 
 suites:
   - name: default
     run_list:
+      - recipe[cm-update-server::default]
     attributes:
