@@ -1,10 +1,13 @@
 # cm-update-server-cookbook
 
-TODO: Enter the cookbook description here.
+This Chef cookbook provisions a simple instance of the unofficial
+[cm-update-server](https://github.com/xdarklight/cm-update-server), for
+distributing custom ROM updates (full & incremental) via the [CMUpdater
+app](https://github.com/CyanogenMod/android_packages_apps_CMUpdater).
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+* Ubuntu 14.04 LTS
 
 ## Attributes
 
