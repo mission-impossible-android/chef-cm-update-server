@@ -7,19 +7,22 @@
 # All rights reserved - Do Not Redistribute
 #
 
-node_app_path = "/opt/nodejs"
-install_path = "#{node_app_path}/cm-update-server"
+require 'pathname'
 
+install_path = node['cm_update_server']['install_path']
+
+node_app_path = Pathname.new(install_path).dirname
 directory node_app_path do
   owner "root"
   group "root"
+  recursive true
 end
 
 include_recipe "git"
 
 git "cm-update-server" do
-  repository "https://github.com/xdarklight/cm-update-server.git"
-  revision "master"
+  repository node['cm_update_server']['git_url']
+  revision node['cm_update_server']['git_revision']
 
   destination install_path
   action :sync

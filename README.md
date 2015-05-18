@@ -11,20 +11,11 @@ app](https://github.com/CyanogenMod/android_packages_apps_CMUpdater).
 
 ## Attributes
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['cm-update-server']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+| Key | Type | Description | Default |
+|-----|------|-------------|---------|
+| `['cm_update_server']['install_path']` | String | - | `/opt/nodejs/cm-update-server` |
+| `['cm_update_server']['git_url']` | String | - | `https://github.com/xdarklight/cm-update-server.git` |
+| `['cm_update_server']['git_revision']` | String | - | `master` |
 
 ## Usage
 
