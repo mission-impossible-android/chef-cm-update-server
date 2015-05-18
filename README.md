@@ -56,4 +56,4 @@ bundle exec kitchen test
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Patrick Connolly (patcon) \<patrick.c.connolly@gmail.com\>

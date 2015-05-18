@@ -2,7 +2,7 @@
 # Cookbook Name:: cm-update-server
 # Recipe:: default
 #
-# Copyright (C) 2015 YOUR_NAME
+# Copyright (C) 2015 Patrick Connolly
 #
 # All rights reserved - Do Not Redistribute
 #
