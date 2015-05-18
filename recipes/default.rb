@@ -36,6 +36,8 @@ execute "npm update" do
   cwd install_path
 end
 
+include_recipe "sqlite::default"
+
 directory "#{install_path}/data"
 
 environments = ["production"]
