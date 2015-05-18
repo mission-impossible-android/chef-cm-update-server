@@ -2,7 +2,7 @@
 # Cookbook Name:: cm-update-server
 # Recipe:: default
 #
-# Copyright (C) 2015 YOUR_NAME
+# Copyright (C) 2015 Patrick Connolly
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -18,8 +18,9 @@ end
 include_recipe "git"
 
 git "cm-update-server" do
-  repository "https://github.com/patcon/cm-update-server.git"
-  revision "feature/update-docs-setup"
+  repository "https://github.com/xdarklight/cm-update-server.git"
+  revision "master"
+
   destination install_path
   action :sync
 end
@@ -34,6 +35,8 @@ execute "npm update" do
   user "root"
   cwd install_path
 end
+
+include_recipe "sqlite::default"
 
 directory "#{install_path}/data"
 

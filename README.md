@@ -1,10 +1,13 @@
 # cm-update-server-cookbook
 
-TODO: Enter the cookbook description here.
+This Chef cookbook provisions a simple instance of the unofficial
+[cm-update-server](https://github.com/xdarklight/cm-update-server), for
+distributing custom ROM updates (full & incremental) via the [CMUpdater
+app](https://github.com/CyanogenMod/android_packages_apps_CMUpdater).
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+* Ubuntu 14.04 LTS
 
 ## Attributes
 
@@ -37,6 +40,23 @@ Include `cm-update-server` in your node's `run_list`:
 }
 ```
 
+## Testing
+
+The current testing environment requires Docker.
+
+```
+bundle install
+
+# Individual commands
+bundle exec kitchen create
+bundle exec kitchen converge
+bundle exec kitchen verify
+bundle exec kitchen destroy
+
+# (Alternate) All-in-one command
+bundle exec kitchen test
+```
+
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Patrick Connolly (patcon) \<patrick.c.connolly@gmail.com\>
