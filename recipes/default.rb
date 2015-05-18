@@ -11,7 +11,7 @@ require 'pathname'
 
 install_path = node['cm_update_server']['install_path']
 
-node_app_path = Pathname.new(install_path).dirname
+node_app_path = Pathname.new(install_path).dirname.to_s
 directory node_app_path do
   owner "root"
   group "root"
