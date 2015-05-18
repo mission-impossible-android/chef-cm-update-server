@@ -2,14 +2,14 @@
 driver:
   name: docker
 
-driver_config:
-  require_chef_omnibus: "11.18.12"
-
 provisioner:
   name: chef_zero
 
 platforms:
   - name: ubuntu-14.04
+    driver_config:
+      image: chef/ubuntu-14.04:11.16.2
+      require_chef_omnibus: false
 
 suites:
   - name: default
