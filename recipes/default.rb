@@ -18,8 +18,9 @@ end
 include_recipe "git"
 
 git "cm-update-server" do
-  repository "https://github.com/patcon/cm-update-server.git"
-  revision "feature/update-docs-setup"
+  repository "https://github.com/xdarklight/cm-update-server.git"
+  revision "master"
+
   destination install_path
   action :sync
 end
