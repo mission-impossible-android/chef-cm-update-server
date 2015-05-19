@@ -13,11 +13,11 @@ app](https://github.com/CyanogenMod/android_packages_apps_CMUpdater).
 
 ## Attributes
 
-| Key | Type | Description | Default |
-|-----|------|-------------|---------|
-| `['cm_update_server']['install_path']` | String | - | `/opt/nodejs/cm-update-server` |
-| `['cm_update_server']['git_url']` | String | - | `https://github.com/xdarklight/cm-update-server.git` |
-| `['cm_update_server']['git_revision']` | String | - | `master` |
+| Key | Default |
+|-----|---------|
+| `['cm_update_server']['install_path']` | `/opt/nodejs/cm-update-server` |
+| `['cm_update_server']['git_url']` | `https://github.com/xdarklight/cm-update-server.git` |
+| `['cm_update_server']['git_revision']` | `master` |
 
 ## Usage
 
