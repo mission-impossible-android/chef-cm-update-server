@@ -14,12 +14,12 @@ before_script:
   - cp .kitchen.travis.yml .kitchen.local.yml
 
 script:
-  - kitchen create
-  - kitchen converge
-  - kitchen verify
+  - bundle exec kitchen create
+  - bundle exec kitchen converge
+  - bundle exec kitchen verify
 
 after_failure:
   # - cat .kitchen/logs/default-*.log
 
 after_script:
-  - kitchen destroy
+  - bundle exec kitchen destroy
