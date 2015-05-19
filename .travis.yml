@@ -32,5 +32,9 @@ after_failure:
 after_script:
   - bundle exec kitchen destroy
 
+branches:
+  only:
+    - master
+
 notifications:
   email: false
