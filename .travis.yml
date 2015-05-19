@@ -1,5 +1,8 @@
 language: ruby
 
+rvm:
+  - 2.1.0
+
 env:
   global:
     - AWS_ACCESS_KEY_ID=AKIAJJDDRB5HPOV2DCRQ
