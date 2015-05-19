@@ -1,0 +1,40 @@
+language: ruby
+
+cache: bundler
+
+rvm:
+  - 2.1.0
+
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=AKIAJJDDRB5HPOV2DCRQ
+    - AWS_SSH_KEY_ID="travis-insecure::mission-impossible-android/chef-cm-update-server"
+      # AWS_SECRET_ACCESS_KEY
+    - secure: "V85g4eC77sLUqUBjO3TCEC1T4sX0wp3KWrA+mJMsXZ8jAXDfNITzaZB5cRkB298dv0khRkfFkSDYk7ZU5fC5dwoFUJmfPAa/pLfl/d/obe8/cnmKDv2KINzK8KRt98l3gnjBCiTWmmi/Fzru/DF9HhZshaWZ4dkZpYdmliJ+xdSpHhOZWu1redeBEv484mooNnPENdYDHk1tStuB2EdBE/0c3+xTfSSh9NWJM390quwnkXYW+4hbaUwE7L4g4kaIcNKv2ivGnVm32ixjUKqh8AsJ0zDeNZiopvgNq1yUn2R75sE2CRIPC8NpQA8PEnlJjpAOi5nXbbIYBY2+i72nEO7OA/8LZkKdLQ0ST5cla9O6HzndQwboM61lHXRjzI+Hk0OR1hJya5o6+GjvIilHnCxoW0CaOCGld3pP+N08yvAkMpQ/lWTdiG60JTrg1Tja9tw78J/xWZpQxd6B1F2yO2yg75iIwi2ieR+S2e62wYu9gcgnrZvEH3Gh2PAIB9oZto7TMTlDhpMXYQGRUU8xT+Pepr+0m5SIAbAwguDAcRmSeDw2R/5zRXeScdcUB/nnhI8kqcraPiI+gdZvh0k4XrOxt/GLIjfHvt7rEFNsvhB4kDj9NtpdtbPLeGbuUZrHiuvs0Pn4u7/vDmtaf6r2WcmdCJmf0ShP4NhhKIURr0E="
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_5da56aaf327c_key -iv $encrypted_5da56aaf327c_iv -in test/travis_id_rsa.key.enc -out test/travis_id_rsa.key -d
+  - mv test/travis_id_rsa.key ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+
+before_script:
+  - cp .kitchen.travis.yml .kitchen.local.yml
+
+script:
+  - bundle exec kitchen create
+  - bundle exec kitchen converge
+  - bundle exec kitchen verify
+
+after_failure:
+  # - cat .kitchen/logs/default-*.log
+
+after_script:
+  - bundle exec kitchen destroy
+
+branches:
+  only:
+    - master
+
+notifications:
+  email: false
