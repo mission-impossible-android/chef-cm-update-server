@@ -5,7 +5,8 @@ platforms:
   - name: ubuntu-14.04
     driver_config:
       require_chef_omnibus: "11.16.2"
+      # Automatic AMI detection broken?
+      # Ref: https://github.com/test-kitchen/kitchen-ec2/issues/117
       image_id: ami-6ab2a702
-      username: ubuntu
       region: us-east-1
       availability_zone: us-east-1a
