@@ -76,6 +76,13 @@ export AWS_SSH_KEY_ID=<keypair name>
 bundle exec kitchen test
 ```
 
+(Optional) For running Travis CI tests, you'll need to import the insecure
+keypair (step #3 above) that can be retrieved via:
+
+    [sudo] gem install travis
+    cd path/to/repo
+    travis pubkey
+
 ## License and Authors
 
 Author:: Patrick Connolly (patcon) \<patrick.c.connolly@gmail.com\>
