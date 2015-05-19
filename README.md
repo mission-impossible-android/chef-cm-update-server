@@ -33,7 +33,12 @@ Include `cm-update-server` in your node's `run_list`:
 
 ## Testing
 
-The current testing environment requires Docker.
+We can run test-kitchen infrastructure tests either locally (with
+Docker), or remotely (with EC2). We also run remote tests via Travis CI.
+
+#### Local
+
+This local testing environment requires Docker.
 
 ```
 bundle install
@@ -45,6 +50,27 @@ bundle exec kitchen verify
 bundle exec kitchen destroy
 
 # (Alternate) All-in-one command
+bundle exec kitchen test
+```
+
+#### Remote (EC2)
+
+The remote testing environment requires an AWS account and some setup.
+
+1. Create an **AWS user** (eg. `travis-kitchen`): https://console.aws.amazon.com/iam/home#users
+2. **Attach Policy** "AmazonEC2FullAccess" to user: https://console.aws.amazon.com/iam/home#users/travis-kitchen
+3. Import/create a **named SSH keypair**: https://console.aws.amazon.com/ec2/v2/home#KeyPairs
+
+```txt
+cp .kitchen.travis.yml .kitchen.local.yml
+
+[sudo] pip install awscli
+aws configure --profile travis-kitchen
+# Follow prompts using AWS credentials created above
+
+export AWS_PROFILE=travis-kitchen
+export AWS_SSH_KEY_ID=<keypair name>
+
 bundle exec kitchen test
 ```
 
