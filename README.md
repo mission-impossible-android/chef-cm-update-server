@@ -1,5 +1,7 @@
 # cm-update-server-cookbook
 
+[![Build Status](https://travis-ci.org/mission-impossible-android/chef-cm-update-server.svg)](https://travis-ci.org/mission-impossible-android/chef-cm-update-server)
+
 This Chef cookbook provisions a simple instance of the unofficial
 [cm-update-server](https://github.com/xdarklight/cm-update-server), for
 distributing custom ROM updates (full & incremental) via the [CMUpdater
